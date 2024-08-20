@@ -668,7 +668,7 @@ const LimitedDecryptionPanel = () => {
             src="/assets/images/logo2.png"
             width="100"
             height="100"
-            alt="treasurelock logo"
+            alt="hat.sh logo"
           />
           <br />
           {t("drop_file_dec")}
