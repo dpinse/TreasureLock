@@ -230,6 +230,10 @@ export default function EncryptionPanel() {
 
   const [Password, setPassword] = useState();
 
+  const [ConfirmPassword, setConfirmPassword] = useState();
+
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const [showPassword, setShowPassword] = useState(false);
 
   const [PublicKey, setPublicKey] = useState();
@@ -247,6 +251,8 @@ export default function EncryptionPanel() {
   const [keysErrorMessage, setKeysErrorMessage] = useState();
 
   const [shortPasswordError, setShortPasswordError] = useState(false);
+
+  const [mismatchPasswordError, setMismatchPasswordError] = useState(false);
 
   const [encryptionMethod, setEncryptionMethod] = useState("secretKey");
 
@@ -279,6 +285,7 @@ export default function EncryptionPanel() {
     setWrongPrivateKey(false);
     setKeysError(false);
     setShortPasswordError(false);
+    setMismatchPasswordError(false);
   };
 
   const handleRadioChange = (method) => {
@@ -290,6 +297,7 @@ export default function EncryptionPanel() {
     setActiveStep(0);
     setFiles([]);
     setPassword();
+    setConfirmPassword();
     setPublicKey();
     setPrivateKey();
     privateKey = null;
@@ -298,6 +306,7 @@ export default function EncryptionPanel() {
     setWrongPrivateKey(false);
     setKeysError(false);
     setShortPasswordError(false);
+    setMismatchPasswordError(false);
     setIsDownloading(false);
     setShareableLink();
     setSnackBarMessage();
@@ -328,7 +337,12 @@ export default function EncryptionPanel() {
   const handleMethodStep = () => {
     if (encryptionMethodState === "secretKey") {
       if (Password.length >= 12) {
-        setActiveStep(2);
+        if(Password == ConfirmPassword){
+          setActiveStep(2);
+        }
+        else{
+          setMismatchPasswordError(true);
+        }
       } else {
         setShortPasswordError(true);
       }
@@ -352,7 +366,9 @@ export default function EncryptionPanel() {
     let generated = await generatePassword();
     password = generated;
     setPassword(generated);
+    setConfirmPassword(generated);
     setShortPasswordError(false);
+    setMismatchPasswordError(false);
   };
 
   const handleFilesInput = (selectedFiles) => {
@@ -396,6 +412,10 @@ export default function EncryptionPanel() {
   const handlePasswordInput = (selectedPassword) => {
     password = selectedPassword;
     setPassword(selectedPassword);
+  };
+
+  const handleConfirmPasswordInput = (value) => {
+    setConfirmPassword(value);
   };
 
   const handlePublicKeyInput = (selectedKey) => {
@@ -640,7 +660,7 @@ export default function EncryptionPanel() {
             src="/assets/images/logo2.png"
             width="100"
             height="100"
-            alt="hat.sh logo"
+            alt="treasurelock logo"
           />
           <br />
           {t("drop_file_enc")}
@@ -824,61 +844,80 @@ export default function EncryptionPanel() {
             </FormControl>
 
             {encryptionMethod === "secretKey" && (
-              <TextField
-                required
-                error={shortPasswordError ? true : false}
-                type={showPassword ? "text" : "password"}
-                id="encPasswordInput"
-                label={t("required")}
-                placeholder={t("password")}
-                helperText={
-                  Password ? (
-                    <Tooltip
-                      title={`${t("crackTimeEstimation")} ${
-                        passwordStrengthCheck(Password)[1]
-                      }`}
-                      placement="right"
-                      arrow
-                    >
-                      <span>
-                        {t("password_strength")}
-                        {": "}
-                        <strong>{passwordStrengthCheck(Password)[0]}</strong>
-                      </span>
-                    </Tooltip>
-                  ) : (
-                    t("choose_strong_password")
-                  )
-                }
-                variant="outlined"
-                value={Password ? Password : ""}
-                onChange={(e) => handlePasswordInput(e.target.value)}
-                fullWidth
-                InputProps={{
-                  endAdornment: (
-                    <>
-                      {Password && (
-                        <Tooltip title={t("show_password")} placement="left">
-                          <IconButton
-                            onClick={() => setShowPassword(!showPassword)}
-                          >
-                            {showPassword ? <Visibility /> : <VisibilityOff />}
-                          </IconButton>
-                        </Tooltip>
-                      )}
-                      <Tooltip title={t("generate_password")} placement="left">
-                        <IconButton
-                          onClick={generatedPassword}
-                          className="generatePasswordBtn"
-                        >
-                          <CachedIcon />
-                        </IconButton>
-                      </Tooltip>
-                    </>
-                  ),
-                }}
-              />
-            )}
+ <>
+ <TextField
+   required
+   error={shortPasswordError ? true : false}
+   type={showPassword ? "text" : "password"}
+   id="outlined-required"
+   label={t("required")}
+   placeholder={t("password")}
+   helperText={
+     Password ? (
+       <Tooltip
+         title={`${t("crackTimeEstimation")} ${passwordStrengthCheck(Password)[1]}`}
+         placement="right"
+         arrow
+       >
+         <span>
+           {t("password_strength")}
+           {": "}
+           <strong>{passwordStrengthCheck(Password)[0]}</strong>
+         </span>
+       </Tooltip>
+     ) : (
+       t("choose_strong_password")
+     )
+   }
+   variant="outlined"
+   value={Password ? Password : ""}
+   onChange={(e) => handlePasswordInput(e.target.value)}
+   fullWidth
+   InputProps={{
+     endAdornment: (
+       <>
+         {Password && (
+           <Tooltip title={t("show_password")} placement="left">
+             <IconButton onClick={() => setShowPassword(!showPassword)}>
+               {showPassword ? <Visibility /> : <VisibilityOff />}
+             </IconButton>
+           </Tooltip>
+         )}
+         <Tooltip title={t("generate_password")} placement="left">
+           <IconButton onClick={generatedPassword} className="generatePasswordBtn">
+             <CachedIcon />
+           </IconButton>
+         </Tooltip>
+       </>
+     ),
+   }}
+ />
+
+ <TextField
+   required
+   error={mismatchPasswordError ? true : false}
+   type={showConfirmPassword ? "text" : "password"}
+   id="outlined-confirm-required"
+   label={t("confirm_password")}
+   placeholder={t("confirm_password")}
+   variant="outlined"
+   value={ConfirmPassword ? ConfirmPassword : ""}
+   onChange={(e) => handleConfirmPasswordInput(e.target.value)}
+   fullWidth
+   InputProps={{
+     endAdornment: (
+      ConfirmPassword && (
+       <Tooltip title={t("show_password")} placement="left">
+         <IconButton onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+           {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
+         </IconButton>
+       </Tooltip>
+      ) 
+    ),
+   }}
+ />
+</>
+)}
 
             {encryptionMethod === "publicKey" && (
               <>
@@ -1025,6 +1064,10 @@ export default function EncryptionPanel() {
 
                 {encryptionMethod === "secretKey" && shortPasswordError && (
                   <Alert severity="error">{t("short_password")}</Alert>
+                )}
+
+                {encryptionMethod === "secretKey" && mismatchPasswordError && (
+                  <Alert severity="error">{t("mismatch_password")}</Alert>
                 )}
               </div>
             </div>
