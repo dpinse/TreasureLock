@@ -7,9 +7,9 @@
 
 <br>
 
-move to the hat.sh app root directory
+move to the TreasureLock app root directory
 
-`cd hat.sh`
+`cd TreasureLock`
 
 install cypress/dependencies:
 

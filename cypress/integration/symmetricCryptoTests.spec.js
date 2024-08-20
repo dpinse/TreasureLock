@@ -18,7 +18,7 @@ describe("Symmetric encryption test", () => {
     cy.visit('/');
 
     //displays app title
-    cy.contains("Hat.sh");
+    cy.contains("TreasureLock");
 
     //runs the correct version
     cy.contains(currentVersion);

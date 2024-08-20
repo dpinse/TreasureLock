@@ -102,7 +102,7 @@ export default function Footer() {
     {
       type: "monero",
       alt: "xmr",
-      addr: "45K3QyhGGysAGDvFhGnYne3qcajeGmjRXXGZ8p3LeWBxFgiDkZ7XhLuNxDB5QsjS8ySQtHmjGaoWc6Vg5wtfaPmoCHRDmC4",
+      addr: "",
     },
     {
       type: "bitcoin",
@@ -157,12 +157,12 @@ export default function Footer() {
           <Typography variant="body1">
             Built and developed by{" "}
             <Link
-              href="https://github.com/WhateverItWorks/hat.sh-reworked"
+              href="https://dpinse.com"
               target="_blank"
               rel="noopener"
               color="inherit"
             >
-              {"WhateverItWorks"}
+              {"Dpinse"}
             </Link>
           </Typography>
 
@@ -199,7 +199,7 @@ export default function Footer() {
             <DialogContent>
               <Hidden xsDown>
                 <DialogContentText style={{ textAlign: "center" }}>
-                  Hat.sh-Reworked is an open-source application. The project is
+                  TreasureLock is an open-source application. The project is
                   maintained in my free time. Donations of any size are
                   appreciated.
                 </DialogContentText>

@@ -40,7 +40,7 @@ export default function NavAppBar() {
             </Typography>
 
             <IconButton
-              href="https://github.com/WhateverItWorks/hat.sh-reworked"
+              href="https://github.com/dpinse/TreasureLock"
               target="_blank"
               rel="noopener"
             >
