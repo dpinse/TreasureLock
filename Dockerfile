@@ -23,6 +23,9 @@ COPY --from=builder /app/out /usr/share/nginx/html
 # Copy our custom nginx config
 COPY docker/nginx-app.conf /etc/nginx/nginx.conf
 
+# Install curl for the Docker HEALTHCHECK
+RUN apk add --no-cache curl
+
 # Create non-root user `app` and make runtime dirs writable
 RUN addgroup -S app && adduser -S -G app app \
     && mkdir -p /var/run /var/log/nginx /var/cache/nginx \
@@ -31,5 +34,8 @@ RUN addgroup -S app && adduser -S -G app app \
 USER app
 
 EXPOSE 3991
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+    CMD curl -f http://127.0.0.1:3991/health || exit 1
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
