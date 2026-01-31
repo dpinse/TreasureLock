@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@mui/styles";
 import NavAppBar from "../components/AppBar";
 import Hero from "../components/Hero";
 import LimitedPanels from "../components/limited/LimitedPanels";

@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { makeStyles } from "@material-ui/core/styles";
-import Backdrop from "@material-ui/core/Backdrop";
+import { makeStyles } from "@mui/styles";
+import Backdrop from "@mui/material/Backdrop";
 
 const useStyles = makeStyles((theme) => ({
   backDrop: {

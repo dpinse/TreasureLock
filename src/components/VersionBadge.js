@@ -1,6 +1,6 @@
 import { currentVersion } from "../config/Constants";
-import { makeStyles } from "@material-ui/core/styles";
-import Chip from "@material-ui/core/Chip";
+import { makeStyles } from "@mui/styles";
+import Chip from "@mui/material/Chip";
 
 const useStyles = makeStyles((theme) => ({
   chip: {

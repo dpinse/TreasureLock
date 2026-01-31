@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Container from "@material-ui/core/Container";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+import { makeStyles, withStyles } from "@mui/styles";
+import AppBar from "@mui/material/AppBar";
+import Container from "@mui/material/Container";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 import LimitedEncryptionPanel from "./LimitedEncryptionPanel";
 import LimitedDecryptionPanel from "./LimitedDecryptionPanel";
 import LimitedAlert from "./LimitedAlert";

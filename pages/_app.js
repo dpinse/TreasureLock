@@ -1,20 +1,31 @@
 /* eslint-disable @next/next/no-sync-scripts */
-import Head from "next/head";
-import { getTranslations as t } from "../locales";
-import "../public/assets/styles/style.css";
-import { checkTheme } from "../src/config/Theme";
+import * as React from 'react';
+import Head from 'next/head';
+import { CacheProvider } from '@emotion/react';
+import createEmotionCache from '../src/createEmotionCache';
+import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider as StylesProvider } from '@mui/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { getTranslations as t } from '../locales';
+import '../public/assets/styles/style.css';
+import { checkTheme } from '../src/config/Theme';
+import { Theme } from '../src/config/Theme';
 
-//check wether the user prefers/chose dark theme
+//check whether the user prefers/chose dark theme
 checkTheme();
 
-function MyApp({ Component, pageProps }) {
+const clientSideEmotionCache = createEmotionCache();
+
+function MyApp(props) {
+  const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
+
   return (
-    <>
+    <CacheProvider value={emotionCache}>
       <Head>
         <title>
-          {"TreasureLock"}
-          {" - "}
-          {t("sub_title")}
+          {'TreasureLock'}
+          {' - '}
+          {t('sub_title')}
         </title>
         <link rel="icon" href="/favicon.ico" />
 
@@ -28,20 +39,15 @@ function MyApp({ Component, pageProps }) {
           name="Keywords"
           content="encrypt decrypt encryption file-encryption javascript client-side serverless decryption xchcha20 argon2id encryption-decryption webcrypto crypto browser in-browser"
         />
-        <meta
-          name="theme-color"
-          content="#fafafa"
-          media="(prefers-color-scheme: light)"
-        />
-        <meta
-          name="theme-color"
-          content="#1c1c1c"
-          media="(prefers-color-scheme: dark)"
-        />
       </Head>
 
-      <Component {...pageProps} />
-    </>
+      <StylesProvider theme={Theme}>
+        <ThemeProvider theme={Theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </StylesProvider>
+    </CacheProvider>
   );
 }
 

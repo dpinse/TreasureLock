@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@mui/styles";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 import { getTranslations as t } from "../../locales";
 
 const useStyles = makeStyles((theme) => ({

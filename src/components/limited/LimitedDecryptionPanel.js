@@ -11,36 +11,36 @@ import {
   SIGNATURES,
   decoder,
 } from "../../config/Constants";
-import { Alert, AlertTitle } from "@material-ui/lab";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Stepper from "@material-ui/core/Stepper";
-import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
-import StepContent from "@material-ui/core/StepContent";
-import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import Backdrop from "@material-ui/core/Backdrop";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
-import Collapse from "@material-ui/core/Collapse";
-import RefreshIcon from "@material-ui/icons/Refresh";
-import DescriptionIcon from "@material-ui/icons/Description";
-import GetAppIcon from "@material-ui/icons/GetApp";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import AttachFileIcon from "@material-ui/icons/AttachFile";
-import CloseIcon from "@material-ui/icons/Close";
+import { Alert, AlertTitle } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import Grid from "@mui/material/Grid";
+import Stepper from "@mui/material/Stepper";
+import Step from "@mui/material/Step";
+import StepLabel from "@mui/material/StepLabel";
+import StepContent from "@mui/material/StepContent";
+import Button from "@mui/material/Button";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import Collapse from "@mui/material/Collapse";
+import RefreshIcon from "@mui/icons-material/Refresh";
+import DescriptionIcon from "@mui/icons-material/Description";
+import GetAppIcon from "@mui/icons-material/GetApp";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
+import CloseIcon from "@mui/icons-material/Close";
 import {
   List,
   ListItem,
   ListItemSecondaryAction,
   ListItemText,
-} from "@material-ui/core";
-import DeleteIcon from "@material-ui/icons/Delete";
+} from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { getTranslations as t } from "../../../locales";
 
 const _sodium = require("libsodium-wrappers");

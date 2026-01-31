@@ -1,21 +1,21 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Alert from "@material-ui/lab/Alert";
-import { AlertTitle } from "@material-ui/lab";
-import IconButton from "@material-ui/core/IconButton";
-import Collapse from "@material-ui/core/Collapse";
-import Button from "@material-ui/core/Button";
-import CloseIcon from "@material-ui/icons/Close";
-import { Typography } from "@material-ui/core";
-import { Paper, Grid, Tooltip } from "@material-ui/core";
-import CachedIcon from "@material-ui/icons/Cached";
-import { TextField } from "@material-ui/core";
-import GetAppIcon from "@material-ui/icons/GetApp";
+import { makeStyles } from "@mui/styles";
+import Alert from "@mui/material/Alert";
+import { AlertTitle } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import Collapse from "@mui/material/Collapse";
+import Button from "@mui/material/Button";
+import CloseIcon from "@mui/icons-material/Close";
+import { Typography } from "@mui/material";
+import { Paper, Grid, Tooltip } from "@mui/material";
+import CachedIcon from "@mui/icons-material/Cached";
+import { TextField } from "@mui/material";
+import GetAppIcon from "@mui/icons-material/GetApp";
 import { generateAsymmetricKeys } from "../utils/generateAsymmetricKeys";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import Hidden from '@material-ui/core/Hidden';
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Box from '@mui/material/Box';
 import { getTranslations as t } from "../../locales";
 import QuickResponseCode from "./QuickResponseCode";
 
@@ -121,13 +121,13 @@ const KeysGeneration = (props) => {
           {t("key_pair_question")}
         </Typography>
 
-        <Hidden xsDown>
+        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
           <a href="/about/#why-need-private-key" target="_blank">
             <Typography variant="caption" className={classes.keyCaption}>
               {t('why_need_private_key')}
             </Typography>
           </a>
-        </Hidden>
+        </Box>
       </div>
     }
       <div className={classes.root}>

@@ -1,27 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from "react";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
-import FileCopyIcon from "@material-ui/icons/FileCopy";
-import Link from "@material-ui/core/Link";
-import { Chip, Avatar, Hidden } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import { IconButton, Tooltip, TextField } from "@material-ui/core";
-import { Alert } from "@material-ui/lab";
-import Snackbar from "@material-ui/core/Snackbar";
+import Typography from "@mui/material/Typography";
+import { makeStyles } from "@mui/styles";
+import Container from "@mui/material/Container";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import FileCopyIcon from "@mui/icons-material/FileCopy";
+import Link from "@mui/material/Link";
+import { Chip, Avatar } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import { IconButton, Tooltip, TextField } from "@mui/material";
+import { Alert } from "@mui/material";
+import Snackbar from "@mui/material/Snackbar";
 import { getTranslations as t } from "../../locales";
-let QRCode = require("qrcode.react");
+import QRCode from "react-qr-code";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -206,13 +207,13 @@ export default function Footer() {
             <DialogTitle>{"Donations"}</DialogTitle>
 
             <DialogContent>
-              <Hidden xsDown>
+              <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                 <DialogContentText style={{ textAlign: "center" }}>
                   TreasureLock is an open-source application. The project is
                   maintained in my free time. Donations of any size are
                   appreciated.
                 </DialogContentText>
-              </Hidden>
+              </Box>
 
               <Tabs
                 value={tabValue}
@@ -230,28 +231,16 @@ export default function Footer() {
               {cryptoAddrs.map((res, index) => (
                 <TabPanel value={tabValue} index={index} key={index}>
                   <div className={classes.qr}>
-                    <QRCode
-                      style={{
-                        borderRadius: 8,
-                        margin: 10,
-                        boxShadow: "0px 0px 35px 2px rgba(0,0,0,0.2)",
-                      }}
-                      value={`${res.type}:${res.addr}`}
-                      size={200}
-                      bgColor={"#ffffff"}
-                      fgColor={"#000000"}
-                      level={"M"}
-                      renderAs={"canvas"}
-                      includeMargin={true}
-                      imageSettings={{
-                        src: `/assets/icons/${res.alt}-logo.png`,
-                        x: null,
-                        y: null,
-                        height: 40,
-                        width: 40,
-                        excavate: false,
-                      }}
-                    />
+                    <div style={{ borderRadius: 8, margin: 10, boxShadow: "0px 0px 35px 2px rgba(0,0,0,0.2)", padding: 8, background: '#fff' }}>
+                      <QRCode
+                        value={`${res.type}:${res.addr}`}
+                        size={200}
+                        bgColor="#ffffff"
+                        fgColor="#000000"
+                        level="M"
+                        style={{ height: "200px", width: "200px" }}
+                      />
+                    </div>
                   </div>
                   <TextField
                     style={{ marginBottom: 15 }}
@@ -288,7 +277,7 @@ export default function Footer() {
           </Dialog>
         </Container>
       </footer>
-      <Hidden xsDown>
+      <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
         <Snackbar
           style={{ zIndex: 1 }}
           anchorOrigin={{
@@ -332,7 +321,7 @@ export default function Footer() {
             {t("donation_message")}
           </Alert>
         </Snackbar>
-      </Hidden>
+      </Box>
     </div>
   );
 }

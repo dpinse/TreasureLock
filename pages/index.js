@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import MainContainer from "../src/views/MainContainer";
 import LimitedContainer from "../src/views/LimitedContainer";
-import { ThemeProvider } from "@material-ui/styles";
-import { Theme } from "../src/config/Theme";
 import LoadingCom from "../src/components/Loading";
 
 const Home = () => {
@@ -47,11 +45,10 @@ const Home = () => {
   }, []);
 
   return (
-    <ThemeProvider theme={Theme}>
+    <>
       <LoadingCom open={loading} />
-      {!loading &&
-        (swReg && browserSupport ? <MainContainer /> : <LimitedContainer />)}
-    </ThemeProvider>
+      {!loading && (swReg && browserSupport ? <MainContainer /> : <LimitedContainer />)}
+    </>
   );
 };
 
