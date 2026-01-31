@@ -17,7 +17,14 @@ RUN npm run build
 
 FROM nginx:stable-alpine
 
+# Copy built static files and ensure they are owned by a non-root user.
 COPY --from=builder /app/out /usr/share/nginx/html
+
+# Create a non-root user `app` and make nginx writable where needed.
+RUN addgroup -S app && adduser -S -G app app \
+	&& chown -R app:app /usr/share/nginx/html /var/cache/nginx /var/run /var/log/nginx
+
+USER app
 
 EXPOSE 3991
 
