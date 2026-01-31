@@ -17,12 +17,16 @@ RUN npm run build
 
 FROM nginx:stable-alpine
 
-# Copy built static files and ensure they are owned by a non-root user.
+# Copy built static files
 COPY --from=builder /app/out /usr/share/nginx/html
 
-# Create a non-root user `app` and make nginx writable where needed.
+# Copy our custom nginx config
+COPY docker/nginx-app.conf /etc/nginx/nginx.conf
+
+# Create non-root user `app` and make runtime dirs writable
 RUN addgroup -S app && adduser -S -G app app \
-	&& chown -R app:app /usr/share/nginx/html /var/cache/nginx /var/run /var/log/nginx
+    && mkdir -p /var/run /var/log/nginx /var/cache/nginx \
+    && chown -R app:app /usr/share/nginx/html /var/run /var/log/nginx /var/cache/nginx /tmp
 
 USER app
 
