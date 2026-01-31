@@ -4,9 +4,9 @@ WORKDIR /app
 
 COPY package*.json ./
 
-# Use `npm ci` to install exactly from package-lock.json for reproducible builds
-# and to avoid differences that can trigger Next's lockfile patcher.
-RUN npm ci --prefer-offline --no-audit
+# Install dependencies; use `npm install` here to avoid `npm ci` failing when
+# package.json and package-lock.json are not perfectly in sync in CI.
+RUN npm install --prefer-offline --no-audit
 
 COPY . ./
 
