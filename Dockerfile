@@ -10,7 +10,7 @@ COPY . ./
 
 ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN npm run build && npm run export
+RUN npm run build
 
 
 FROM nginx:stable-alpine
