@@ -1,12 +1,13 @@
 version: "3"
 
 services:
-  web:
-    image: shdv/hat.sh
+  app:
     build:
       context: ./
       dockerfile: Dockerfile
+    container_name: treasurelock
+    environment:
+      - NODE_ENV=production
     ports:
-      - 3991:80
-    volumes:
-      - ./src:/usr/share/nginx/html/out
+      - "3991:3991"
+    restart: unless-stopped
