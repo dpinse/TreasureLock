@@ -39,6 +39,7 @@ const ru_RU = {
   error: "Ошибка",
   required: "Требуется",
   success: "Успешно",
+  confirm_password: "Подтвердить Пароль",
   show_password: "Показать Пароль",
   copy_password: "Копировать Пароль",
   password_copied: "Пароль скопирован!",

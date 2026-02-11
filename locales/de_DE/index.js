@@ -39,6 +39,7 @@ const de_DE = {
   error: "Fehler",
   required: "Erforderlich",
   success: "Erfolg",
+  confirm_password: "Passwort bestätigen",
   show_password: "Passwort anzeigen",
   copy_password: "Passwort kopieren",
   password_copied: "Passwort kopiert!",

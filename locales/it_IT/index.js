@@ -39,6 +39,7 @@ const it_IT = {
   error: "Errore",
   required: "Obbligatorio",
   success: "Completato",
+  confirm_password: "Conferma Password",
   show_password: "Mostra Password",
   copy_password: "Copia Password",
   password_copied: "Password copiata!",

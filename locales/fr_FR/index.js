@@ -38,6 +38,7 @@ const fr_FR = {
   error: "Erreur",
   required: "Requis",
   success: "Succès",
+  confirm_password: "Confirmer le mot de passe",
   show_password: "Afficher mot de passe",
   copy_password: "Copier mot de passe",
   password_copied: "Mote de passe copié!",

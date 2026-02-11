@@ -39,6 +39,7 @@ const es_ES = {
   error: "Error",
   required: "Necesario",
   success: "Éxito",
+  confirm_password: "Confirmar contraseña",
   show_password: "Mostrar contraseña",
   copy_password: "Copiar contraseña",
   password_copied: "¡Contraseña copiada!",

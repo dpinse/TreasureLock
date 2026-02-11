@@ -39,6 +39,7 @@ const zh_CN = {
     error: "错误", // Error
     required: "必填项", // Required
     success: "成功", // Success
+    confirm_password: "确认密码", // Confirm Password
     show_password: "显示密码", // Show Password
     copy_password: "复制密码", // Copy Password
     password_copied: "密码已复制！", // Password copied!

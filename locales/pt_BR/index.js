@@ -39,6 +39,7 @@ const pt_BR = {
   error: "Erro",
   required: "Obrigatório",
   success: "Sucesso",
+  confirm_password: "Confirmar Senha",
   show_password: "Mostrar Senha",
   copy_password: "Copiar Senha",
   password_copied: "Senha copiada!",

@@ -39,6 +39,7 @@ const sk_SK = {
   error: "Chyba",
   required: "Povinné",
   success: "Úspech",
+  confirm_password: "Potvrdiť Heslo",
   show_password: "Zobraziť Heslo",
   copy_password: "Kopírovať Heslo",
   password_copied: "Heslo skopírované!",

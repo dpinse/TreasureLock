@@ -39,6 +39,7 @@ const ja_JP = {
   error: "エラー",
   required: "必要",
   success: "成功",
+  confirm_password: "パスワードを確認する",
   show_password: "パスワードを表示する",
   copy_password: "パスワードをコピーする",
   password_copied: "パスワードをコピーしました！",

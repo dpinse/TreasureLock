@@ -39,6 +39,7 @@ const tr_TR = {
   error: "Hata",
   required: "Gerekli",
   success: "Başarılı",
+  confirm_password: "Parolayı Onayla",
   show_password: "Parolayı Göster",
   copy_password: "Parolayı Kopyala",
   password_copied: "Parola kopyalandı!",

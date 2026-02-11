@@ -39,6 +39,7 @@ const cs_CS = {
   error: "Chyba",
   required: "Povinné",
   success: "Úspěch",
+  confirm_password: "Potvrdit Heslo",
   show_password: "Ukázat Heslo",
   copy_password: "Zkopírovat Heslo",
   password_copied: "Heslo zkopírováno!",
