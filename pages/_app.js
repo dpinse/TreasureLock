@@ -22,11 +22,7 @@ function MyApp(props) {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title>
-          {'TreasureLock'}
-          {' - '}
-          {t('sub_title')}
-        </title>
+        <title>{`TreasureLock - ${t('sub_title')}`}</title>
         <link rel="icon" href="/favicon.ico" />
 
         <meta charSet="utf-8" />
